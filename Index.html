@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Любовь Даниала к Мерей</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/img/background.jpg">
+  <style>
+    /* Сброс */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('assets/img/background.jpg') no-repeat center center/cover;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 1;
+    }
+
+    .card {
+      position: relative;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 2s ease-out;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #ffdde1;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #ffeaf4;
+      font-weight: 400;
+      height: 45px; /* Для эффекта печати */
+      margin-bottom: 30px;
+      min-height: 50px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #ffc1d9;
+      animation: blinkCaret 0.75s step-end infinite;
+      display: inline-block;
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes blinkCaret {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #ffc1d9; }
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #fce4ec;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      margin-top: 30px;
+      color: #ffc1d9;
+      text-align: right;
+    }
+
+    /* Кнопка написать */
+    .btn-email {
+      margin-top: 25px;
+      display: inline-block;
+      background: #ff7bac;
+      color: white;
+      padding: 12px 28px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 123, 172, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      user-select: none;
+    }
+    .btn-email:hover {
+      background: #ff4f8c;
+      box-shadow: 0 6px 15px rgba(255, 79, 140, 0.8);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+        height: 35px;
+        min-height: 40px;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .card {
+        padding: 30px 20px;
+      }
+      .signature {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+    }
+
+    /* Лепестки canvas */
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <canvas id="petalCanvas"></canvas>
+
+  <div class="card" role="main" aria-label="Любовное письмо">
+    <h1>Мерей</h1>
+    <h2 id="typed-text"></h2>
+
+    <p>
+      Иногда в жизни встречаются люди, которые меняют всё. Они появляются тихо, как лёгкий ветерок в жаркий день, и вдруг ты понимаешь — без них уже не дышится. Для меня такой человек — ты, Мерей.
+    </p>
+
+    <p>
+      Я долго искал слова, чтобы описать, что ты для меня значишь. Но ни один язык не способен выразить ту глубину чувств, которую я испытываю к тебе. Ты — моя муза, моя тишина, мой внутренний покой. В тебе живёт всё, о чём я мечтал — нежность, тепло, искренность, сила.
+    </p>
+
+    <p>
+      Я не просто люблю тебя. Я благодарен тебе. За то, что ты есть. За то, как ты смотришь. За то, как ты умеешь молчать рядом, и при этом я чувствую, что меня слышат. За твою доброту. За твой свет. За твою душу, в которой можно укрыться от всего мира.
+    </p>
+
+    <p>
+      С тобой я стал другим. Ты раскрыла во мне чувства, о которых я даже не подозревал. Благодаря тебе я понял, что любовь — это не просто слово. Это действие. Это забота. Это выбор — быть рядом несмотря ни на что.
+    </p>
+
+    <p>
+      Я хочу идти с тобой по жизни. Радоваться вместе простым вещам. Держать тебя за руку в трудные дни. Смотреть на звёзды и молчать, зная, что нам больше ничего не нужно. Просто быть. Просто любить.
+    </p>
+
+    <p>
+      Ты вдохновляешь меня жить честно, чувствовать глубоко и мечтать смело. Ты — мой свет в этом мире. Ты — моё всё.
+    </p>
+
+    <p class="signature">С любовью, Даниал</p>
+  </div>
+
+  <script>
+    // === Эффект печатающейся строки ===
+    const text = "Моё сердце принадлежит тебе";
+    const typedTextElem = document.getElementById('typed-text');
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        typedTextElem.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    typeWriter();
+
+    // === Падающие лепестки роз на canvas ===
+    const canvas = document.getElementById('petalCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H;
+
+    function resize() {
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = W;
+      canvas.height = H;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Petal {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * -H;
+        this.size = 10 + Math.random() * 20;
+        this.speed = 1 + Math.random() * 2;
+        this.angle = Math.random() * 2 * Math.PI;
+        this.angleSpeed = 0.01 + Math.random() * 0.02;
+        this.opacity = 0.5 + Math.random() * 0.5;
+        this.wind = 0.5 - Math.random(); // -0.5 .. +0.5
+      }
+      update() {
+        this.y += this.speed;
+        this.x += this.wind;
+        this.angle += this.angleSpeed;
+        if (this.y > H) this.reset();
+        if (this.x > W) this.x = 0;
+        if (this.x < 0) this.x = W;
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        // Лепесток — простая форма, можно заменить на картинку или сложнее
+        ctx.fillStyle = `rgba(255, 182, 193, ${this.opacity})`; // lightpink
+        ctx.beginPath();
+        ctx.ellipse(0, 0, this.size * 0.6, this.size, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const petalsCount = 40;
+    const petals = [];
+    for(let i=0; i < petalsCount; i++) {
+      petals.push(new Petal());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      petals.forEach(petal => {
+        petal.update();
+        petal.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
